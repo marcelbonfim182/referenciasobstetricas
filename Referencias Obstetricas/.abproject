@@ -1,0 +1,45 @@
+{
+  "ProjectName": "Referencias Obstetricas",
+  "ProjectGuid": "ed405054-b96c-4ed1-b3b7-138cf71d54d5",
+  "projectVersion": 1,
+  "AppIdentifier": "com.telerik.ReferenciasObstetricas",
+  "DisplayName": "Referencias Obstetricas",
+  "Author": "",
+  "Description": "Referencias Obstetricas",
+  "BundleVersion": "1.0",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
+  "FrameworkVersion": "6.4.0",
+  "AndroidPermissions": [
+    "android.permission.INTERNET"
+  ],
+  "DeviceOrientations": [
+    "Portrait",
+    "Landscape"
+  ],
+  "AndroidHardwareAcceleration": "true",
+  "iOSStatusBarStyle": "Default",
+  "Framework": "Cordova",
+  "WP8TileTitle": "",
+  "WP8Publisher": "",
+  "WP8Capabilities": [
+    "ID_CAP_NETWORKING",
+    "ID_CAP_WEBBROWSERCOMPONENT"
+  ],
+  "WP8Requirements": [],
+  "WP8PublisherID": "{8307d5b6-0e93-4695-b7ef-34bf7c189112}",
+  "WP8ProductID": "{e78e069d-3bea-4651-b18b-62ae501344d2}",
+  "WPSdk": "8.0",
+  "WP8PackageIdentityName": "1234Telerik.ReferenciasObstetricas",
+  "WP8WindowsPublisherName": "CN=Telerik",
+  "WP8SupportedResolutions": [
+    "ID_RESOLUTION_WVGA",
+    "ID_RESOLUTION_WXGA",
+    "ID_RESOLUTION_HD720P"
+  ]
+}
