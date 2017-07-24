@@ -202,6 +202,20 @@ button {
      font-size:12px!important;
 }
 
+.backbutton {
+    height:40px;
+    width:40px;
+    background-image: url("images/cross.svg")!important;
+    background-size: 50% 50%!important;
+    background-position: center center!important;
+    background-repeat: no-repeat!important;
+    background-color: transparent!important;
+    position:absolute;
+    right:0px;
+    top:-30px;
+    
+}
+
 
 
 
