@@ -1,0 +1,72 @@
+<div data-role="view" data-title="View" data-layout="main" data-model="app.homeView" data-show="app.homeView.onShow" data-after-show="app.homeView.afterShow" id="homeViewScreen" class="screen km-light">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+           
+            <img class="logocabecalho" src="styles/images/logo.svg">
+            
+            <!---<span data-bind="text: strings.homeView.title"></span>--->
+
+        </div>
+    </header>
+    <div class="titulo_calculadoras">IDADE GESTACIONAL DUM <br><div class="traco_titulo_calculadoras"></div></div>
+    
+    <div class="caixainfo">
+        
+        <div>Data da última menstruação:</div>
+        <input id="dum" name="dum" class="calcgest"value="Clique aqui para inserir a data" /> 
+        <button onclick="calcularGestacao();">CALCULAR</button>
+         <script>
+	
+	$(function () {
+    // Create a datepicker
+    $("#dum").mobiscroll().date({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+});
+
+function calcularGestacao() {
+    var hoje = new Date();
+    var meses = ["Janeiro","Fevereiro","MarÃ§o","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+    if ($("#dum").val() != "Clique aqui para inserir a data"){
+		var data = $( "#dum" ).val().split("/").reverse().join("/");
+        var newdata = new Date(data);     
+        var dataultmens = new Date(newdata.getTime() + 280 * 24 * 60 * 60 * 1000);
+        var dias = (hoje.getTime() - newdata.getTime())/(24 * 60 * 60 * 1000);
+        var semanas = dias/7;
+        var converteSemana = parseInt(semanas);
+        var diasExtras = parseInt(((semanas - converteSemana) *7) +0.5);
+		if (diasExtras == 7) {
+            diasExtras = 0
+			converteSemana = converteSemana + 1
+        }
+		palavraDia = " dias";
+		if (diasExtras == 1) {
+            palavraDia = " dia";
+        }
+        //document.getElementById("demo").innerHTML="<b>DATA PROVÁVEL DO PARTO: </b>" + dataultmens.getDate() + " de " + meses[dataultmens.getMonth()] + " de " +dataultmens.getFullYear()+"." + "<br><br><b>IDADE GESTACIONAL: </b> " + converteSemana + " semanas e " + diasExtras + palavraDia+".";
+	    	
+        swal({
+                  title: "RESULTADO:",
+                  text: "<div class='infoswal'><b>DATA PROVÁVEL DO PARTO: <br>" + dataultmens.getDate() + " de " + meses[dataultmens.getMonth()] + " de " +dataultmens.getFullYear()+"." + "<br><br><b>IDADE GESTACIONAL: <br> " + converteSemana + " semanas e " + diasExtras + palavraDia+".</div>", html:true
+              });
+    
+    
+    } 
+	}             
+             
+	</script>
+        
+    </div>
+    
+     
+  
+    
+</div>
+    
+    
+    <!-- START_CUSTOM_CODE_homeView -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+    <!--<h1 data-bind="html: title"></h1>-->
+    <!-- END_CUSTOM_CODE_homeView -->

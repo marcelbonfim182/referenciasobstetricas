@@ -23,7 +23,7 @@
             app.mobileApp = new kendo.mobile.Application(document.body, {
                 transition: 'slide',
                 skin: 'nova',
-                initial: 'components/homeView/view.html'
+                initial: 'links/homeView/view.html'
             });
 
             kendo.bind($('.navigation-link-text'), app.navigation.viewModel);
