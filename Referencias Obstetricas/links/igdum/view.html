@@ -1,13 +1,13 @@
-<div data-role="view" data-title="View" data-layout="main" data-model="app.homeView" data-show="app.homeView.onShow" data-after-show="app.homeView.afterShow" id="homeViewScreen" class="screen km-light">
+<div data-role="view" data-title="View" data-layout="main" data-model="app.igdum" data-show="app.igdum.onShow" data-after-show="app.igdum.afterShow" id="igdumScreen" class="screen km-light">
     <header data-role="header">
         <div data-role="navbar" class="header-text">
            
             <img class="logocabecalho" src="styles/images/logo.svg">
-             <a class="backbutton" href="links/homeView/view.html" data-transition-native-androiddelay="250" data-transition-native-iosdelay="250" data-transition="slide:up" data-role="button" data-click=""></a>
             
+             <button class="backbutton" onclick="setTimeout(function(){ event.preventDefault ? event.preventDefault() : event.returnValue = false; setTimeout(function(){window.kendo.mobile.application.pane.navigate('#:back')},20); window.NativePageTransitionsKendoAdapter.slide('down', null,'' + 140 + '', '' + 140 + '')}, 200)"></button>
+            <!----<a class="backbutton" href="links/homeView/view.html" data-transition-native-androiddelay="250" data-transition-native-iosdelay="250" data-transition="slide:up" data-role="button" data-click=""></a>-->
             
-            
-            <!---<span data-bind="text: strings.homeView.title"></span>--->
+            <!---<span data-bind="text: strings.igdum.title"></span>--->
 
         </div>
     </header>
@@ -16,8 +16,8 @@
     <div class="caixainfo">
         
         <div>Data da última menstruação:</div>
-        <input id="dum" name="dum" class="calcgest"value="Clique aqui para inserir a data" /> 
-        <button onclick="calcularGestacao();">CALCULAR</button>
+        <input id="dum" name="dum" class="calcgest campo_input"value="Clique aqui para inserir a data" /> 
+        <button onclick=" setTimeout(function(){calcularGestacao()}, 200);">CALCULAR</button>
          <script>
 	
 	$(function () {
@@ -31,8 +31,9 @@
 
 function calcularGestacao() {
     var hoje = new Date();
-    var meses = ["Janeiro","Fevereiro","MarÃ§o","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
-    if ($("#dum").val() != "Clique aqui para inserir a data"){
+    var meses = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+    
+    if ($("#dum").val() != "Toque para inserir a data"){
 		var data = $( "#dum" ).val().split("/").reverse().join("/");
         var newdata = new Date(data);     
         var dataultmens = new Date(newdata.getTime() + 280 * 24 * 60 * 60 * 1000);
@@ -52,11 +53,21 @@ function calcularGestacao() {
 	    	
         swal({
                   title: "RESULTADO:",
-                  text: "<div class='infoswal'><b>DATA PROVÁVEL DO PARTO: <br>" + dataultmens.getDate() + " de " + meses[dataultmens.getMonth()] + " de " +dataultmens.getFullYear()+"." + "<br><br><b>IDADE GESTACIONAL: <br> " + converteSemana + " semanas e " + diasExtras + palavraDia+".</div>", html:true
+                  text: "<div class='infoswal'><b>DATA PROVÁVEL DO PARTO: <br> <span style='font-weight:100!important;color:#000;font-size:14px;'>" + dataultmens.getDate() + " de " + meses[dataultmens.getMonth()] + " de " +dataultmens.getFullYear()+".</span>" + "<br><br><b>IDADE GESTACIONAL: <br><span style='font-weight:100!important;color:#000;font-size:14px;'> " + converteSemana + " semanas e " + diasExtras + palavraDia+".</span></div>", 
+                  html:true
               });
     
     
-    } 
+      } 
+        
+        if ($("#dum").val() == "Toque para inserir a data"){
+
+            swal("Opa!", "Você esqueceu de escolher uma data!", "warning")
+            
+        }
+    
+    
+    
 	}             
              
 	</script>

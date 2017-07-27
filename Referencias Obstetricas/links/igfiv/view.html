@@ -1,0 +1,160 @@
+<div data-role="view" data-title="View" data-layout="main" data-model="app.igfiv" data-show="app.igfiv.onShow" data-after-show="app.igfiv.afterShow" id="igfivScreen" class="screen km-light">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+           
+            <img class="logocabecalho" src="styles/images/logo.svg">
+            
+             <button class="backbutton" onclick="setTimeout(function(){ event.preventDefault ? event.preventDefault() : event.returnValue = false; setTimeout(function(){window.kendo.mobile.application.pane.navigate('#:back')},20); window.NativePageTransitionsKendoAdapter.slide('down', null,'' + 140 + '', '' + 140 + '')}, 200)"></button>
+            <!----<a class="backbutton" href="links/homeView/view.html" data-transition-native-androiddelay="250" data-transition-native-iosdelay="250" data-transition="slide:up" data-role="button" data-click=""></a>-->
+            
+            <!---<span data-bind="text: strings.igusg.title"></span>--->
+
+        </div>
+    </header>
+    <div class="titulo_calculadoras">IDADE GESTACIONAL FIV <br><div class="traco_titulo_calculadoras"></div></div>
+    
+    <div class="caixainfo">
+        
+        <div>Tratamento de fertilidade:</div>
+         <select name="ig_fiv_tratamento" id="ig_fiv_tratamento" class="calcgest campo_select">
+       	 <option  value="ER">Fiv com óvulos próprios</option>
+            <option  value="ET3">Transferência de embrião (dia 3)</option>
+			<option  value="ET5">Transferência de embrião (dia 5)</option>
+		</select> 
+        
+        <div>Data da extração do óvulo:</div>
+        <input id="ig_fiv_extracao" name="ig_fiv_extracao" class="calcgest campo_input"value="Clique aqui para inserir a data" /> 
+        
+        <button onclick=" setTimeout(function(){calcular_ig_fiv()}, 200);">CALCULAR</button>
+      
+         
+  <script>
+	
+	$(function () {
+    // Create a datepicker
+    $("#ig_fiv_extracao").mobiscroll().date({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+    $("#ig_fiv_tratamento").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+      
+   
+                 
+});
+
+function calcular_ig_fiv() {
+      
+if (($("#ig_fiv_extracao").val() != "Toque para inserir a data") && ($("#ig_fiv_tratamento_dummy").val() != "Toque para inserir o tratamento")) { 
+      
+		var selection = $("#ig_fiv_tratamento").val();
+        var data = $("#ig_fiv_extracao").val().split("/").reverse().join("/");
+        var d = new Date(data); 
+     
+      if(selection == 'ER'){
+            var pregnancyElapsedTotalDays = daydiff( d, Date.now()) + 14;
+			var pregnancyElapsedWeeks = Math.floor(pregnancyElapsedTotalDays/7);
+			var pregnancyElapsedDays = Math.floor(pregnancyElapsedTotalDays % 7);
+			//$('#weeksGone').html(pregnancyElapsedWeeks);
+			//$('#daysGone').html(pregnancyElapsedDays);
+    		d.setDate(d.getDate() + 266);
+			var dueDateSingle = d.getDate() + " de " + getMonthName(d.getMonth()) + " de " + d.getFullYear();
+			//$('#single').html(dueDateSingle);
+		    	swal({
+                  title: "RESULTADO:",
+                  text: "<div class='infoswal'><b>IDADE GESTACIONAL: <br> <span style='font-weight:100!important;color:#000;font-size:14px;'>"+ pregnancyElapsedWeeks + " semana(s) e " + pregnancyElapsedDays +" dia(s).</span>" + "<br><br><b>DATA PROVÁVEL DO PARTO: <br><span style='font-weight:100!important;color:#000;font-size:14px;'> " + dueDateSingle +".</span></div>", 
+                  html:true
+             });
+                
+      }
+                
+      if(selection == 'ET3'){
+           var pregnancyElapsedTotalDays = daydiff( d, Date.now()) + 17;
+			var pregnancyElapsedWeeks = Math.floor(pregnancyElapsedTotalDays/7);
+			var pregnancyElapsedDays = Math.floor(pregnancyElapsedTotalDays % 7);
+			//$('#weeksGone').html(pregnancyElapsedWeeks);
+			//$('#daysGone').html(pregnancyElapsedDays);
+    		d.setDate(d.getDate() + 263);
+			var dueDateSingle = d.getDate() + " de " + getMonthName(d.getMonth()) + " de " + d.getFullYear();
+			//$('#single').html(dueDateSingle);
+	    	swal({
+                  title: "RESULTADO:",
+                  text: "<div class='infoswal'><b>IDADE GESTACIONAL: <br> <span style='font-weight:100!important;color:#000;font-size:14px;'>"+ pregnancyElapsedWeeks + " semana(s) e " + pregnancyElapsedDays +" dia(s).</span>" + "<br><br><b>DATA PROVÁVEL DO PARTO: <br><span style='font-weight:100!important;color:#000;font-size:14px;'> " + dueDateSingle +".</span></div>", 
+                  html:true
+             });
+                
+      }
+                
+      if(selection == 'ET5'){
+            var pregnancyElapsedTotalDays = daydiff( d, Date.now()) + 19;
+			var pregnancyElapsedWeeks = Math.floor(pregnancyElapsedTotalDays/7);
+			var pregnancyElapsedDays = Math.floor(pregnancyElapsedTotalDays % 7);
+			//$('#weeksGone').html(pregnancyElapsedWeeks);
+			//$('#daysGone').html(pregnancyElapsedDays);
+    		d.setDate(d.getDate() + 261);
+			var dueDateSingle = d.getDate() + " de " + getMonthName(d.getMonth()) + " de " + d.getFullYear();
+			//$('#single').html(dueDateSingle);
+		    	swal({
+                  title: "RESULTADO:",
+                  text: "<div class='infoswal'><b>IDADE GESTACIONAL: <br> <span style='font-weight:100!important;color:#000;font-size:14px;'>"+ pregnancyElapsedWeeks + " semana(s) e " + pregnancyElapsedDays +" dia(s).</span>" + "<br><br><b>DATA PROVÁVEL DO PARTO: <br><span style='font-weight:100!important;color:#000;font-size:14px;'> " + dueDateSingle +".</span></div>", 
+                  html:true
+             });
+                
+                
+      }
+      
+	}		
+
+          
+        if (($("#ig_fiv_extracao").val() == "Toque para inserir a data") || ($("#ig_fiv_tratamento_dummy").val() == "Toque para inserir o tratamento")) { 
+
+            swal("Opa!", "Preencha todos os campos!", "warning")
+            
+        }
+    
+    
+    
+	  }  
+      
+function daydiff(first, second) {
+	return (second-first)/(1000*60*60*24)
+}
+
+function getMonthName(monthNum) {
+	var month=new Array();
+	month[0]="Janeiro";
+	month[1]="Fevereiro";
+	month[2]="Março";
+	month[3]="Abril";
+	month[4]="Maio";
+	month[5]="Junho";
+	month[6]="Julho";
+	month[7]="Agosto";
+	month[8]="Setembro";
+	month[9]="Outubro";
+	month[10]="Novembro";
+	month[11]="Dezembro";
+	var n = month[monthNum]; 
+	return n;
+}
+
+             
+	</script>
+        
+    </div>
+    
+    
+    
+</div>
+    
+    
+    <!-- START_CUSTOM_CODE_homeView -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+    <!--<h1 data-bind="html: title"></h1>-->
+    <!-- END_CUSTOM_CODE_homeView -->

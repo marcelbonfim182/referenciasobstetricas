@@ -55,6 +55,38 @@
     border:0!important;
 }
 
+.botoes_principais_new {
+    width: 25%!important;
+    
+    background-size: 50% 50%!important;
+    margin: 0px!important;
+    float: left;
+    padding: 0px!important;
+    background-position: center center!important;
+    background-repeat: no-repeat!important;
+    background-color: transparent!important;
+    border:0!important;
+    color:#888e90!important;
+   -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.botoes_principais_new .km-text {
+    margin-top: 84px!important;
+    display: table;
+    font-size: 11px;
+    line-height: 14px;
+    text-align: center!important;
+    margin: 0 auto;
+    letter-spacing: -0.5px!important;
+}
+
+.botoes_principais_new:hover, .botoes_principais_new:active {
+    opacity:0.3!important;
+   }
+
 
 a .km-text {
     margin-top: 84px!important;
@@ -146,6 +178,7 @@ a .km-text {
   background-image: url("images/HEMORRAGIAPOS.svg")!important;
 }
 
+
 .titulo_calculadoras {
     margin: 0 auto!important;
     display:table;
@@ -175,7 +208,7 @@ a .km-text {
     
     
 }
-#dum {
+.campo_input, input {
     height: 40px;
     margin: 0 auto;
     display: table;
@@ -186,7 +219,34 @@ a .km-text {
     color:#888e90!important;
 }
 
-button {
+.boxes_side {
+    padding:0px!important;
+    margin:0px!important;
+}
+.boxes_side li {
+    float:right;
+    display:table;
+    width:45%;
+}
+
+.boxes_side li:first-child {
+float:left!important;
+}
+
+a {
+   -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+ 
+}
+
+.alinkhover {
+   opacity:0.5!important;
+    -webkit-transform: scale3d(0.9, 0.9, 1);
+}
+
+.caixainfo button, .sweet-alert button  {
     background:#f3dcdc!important;
     padding: 14px 16px;
     border:0px!important;
@@ -195,6 +255,24 @@ button {
     display:table;
     font-family: 'Conv_LemonMilk';
     font-size:10px!important;
+   -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+
+.caixainfo button:hover, .caixainfo button:active, .sweet-alert button:hover, .sweet-alert button:active {
+    background:#f3dcdc!important;
+    padding: 14px 16px;
+    border:0px!important;
+    color:#888e90!important;
+    margin: 0 auto;
+    display:table;
+    font-family: 'Conv_LemonMilk';
+    font-size:10px!important;
+    opacity:0.5!important;
+    -webkit-transform: scale3d(0.9, 0.9, 1);
 }
 
 .infoswal {
@@ -212,11 +290,51 @@ button {
     background-color: transparent!important;
     position:absolute;
     right:0px;
-    top:-30px;
+    top:0px;
+    border:0!important;
+   -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.backbutton:hover, .backbutton:active {
+ opacity:0.5;   
     
 }
 
+/*/Cores do menu do MobiScroll/*/
+.mbsc-mobiscroll .dwb {
+    color: #f49d9d!important;
+}
 
+.mbsc-mobiscroll .dwwol {
+    border-top: 1px solid #f49d9d!important;
+    border-bottom: 1px solid #f49d9d!important;
+}
+
+.info_button {
+    float:right!important;
+    margin-top:-3px;
+    margin-right:-3px;
+    height:50px;
+    width:50px;
+    background: url("images/info.svg")!important;
+    background-size: 50% 50%!important;
+    background-position: center center!important;
+    background-repeat: no-repeat!important;
+    background-color: transparent!important;
+    border:0!important;
+   -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.info_button:hover, .info_button:active {
+    opacity:0.5!important;
+    -webkit-transform: scale3d(0.9, 0.9, 1);;  
+}
 
 
 

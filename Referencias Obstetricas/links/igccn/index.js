@@ -1,17 +1,17 @@
 'use strict';
 
-app.igdum = kendo.observable({
+app.igccn = kendo.observable({
     onShow: function() {
-        $("#dum").val("Toque para inserir a data");
+        $("#ig_ccn_head_dummy").val("Toque para inserir o comprimento");
     },
     afterShow: function() {}
 });
-app.localization.registerView('igdum');
+app.localization.registerView('igccn');
 
 // START_CUSTOM_CODE_homeView
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 (function () {
-    app.igdum.set('title', 'Home teste');
+    app.igccn.set('title', 'Home teste');
 })();
 
 
