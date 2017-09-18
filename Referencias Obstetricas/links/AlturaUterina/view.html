@@ -1,0 +1,137 @@
+<div data-role="view" data-title="View" data-layout="main" data-model="app.AlturaUterina" data-show="app.AlturaUterina.onShow" data-after-show="app.AlturaUterina.afterShow" id="AlturaUterinaScreen" class="screen km-light">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+           
+            <img class="logocabecalho" src="styles/images/logo.svg">
+            
+             <button class="backbutton" onclick="setTimeout(function(){ event.preventDefault ? event.preventDefault() : event.returnValue = false; setTimeout(function(){window.kendo.mobile.application.pane.navigate('#:back')},20); window.NativePageTransitionsKendoAdapter.slide('down', null,'' + 140 + '', '' + 140 + '')}, 200);zeratudo_AlturaUterina();"></button>
+            <!----<a class="backbutton" href="links/homeView/view.html" data-transition-native-androiddelay="250" data-transition-native-iosdelay="250" data-transition="slide:up" data-role="button" data-click=""></a>-->
+            
+            <!---<span data-bind="text: strings.igusg.title"></span>--->
+
+        </div>
+    </header>
+    <div class="titulo_calculadoras">ALTURA UTERINA<br><div class="traco_titulo_calculadoras"></div></div>
+    <button class="info_button" onclick="setTimeout(function(){info_AlturaUterina()}, 200);"></button>
+    <div class="caixainfo">
+        
+        
+        <div>Idade Gestacional (semanas completas):</div>
+         <select name="AlturaUterina_head_dummy_head" id="AlturaUterina_head" class="calcgest campo_select">
+       	 <option  value="0">20 semanas</option>
+            <option  value="1">21 semanas</option>
+			<option  value="2">22 semanas</option>
+            <option  value="3">23 semanas</option>
+            <option  value="4">24 semanas</option>
+			<option  value="5">25 semanas</option>
+            <option  value="6">26 semanas</option>
+            <option  value="7">27 semanas</option>
+			<option  value="8">28 semanas</option>
+            <option  value="9">29 semanas</option>
+            <option  value="10">30 semanas</option>
+			<option  value="11">31 semanas</option>
+            <option  value="12">32 semanas</option>
+            <option  value="13">33 semanas</option>
+			<option  value="14">34 semanas</option>
+            <option  value="15">35 semanas</option>
+            <option  value="16">36 semanas</option>
+			<option  value="17">37 semanas</option>
+            <option  value="18">38 semanas</option>
+            <option  value="19">39 semanas</option>
+			<option  value="20">40 semanas</option>
+            <option  value="21">41 semanas</option>
+            <option  value="22">42 semanas</option> 
+		</select> 
+        
+        <div class="AlturaUterina_place_result" style="display:table;margin: 0 auto;">
+               <div class='infoswal'><b>ALTURA UTERINA (cm): </b><br> <span style='font-weight:100!important;color:#000;font-size:14px;'><div style='display:table;margin:0 auto'><ul class='tabela_AlturaUterina gray_background'><li>p10</li><li>-</li></ul><ul class='tabela_AlturaUterina'><li>p50</li><li>-</li></ul><ul class='tabela_AlturaUterina gray_background'><li>p95</li><li>-</li></ul></div></span></div>
+        </div>
+       
+        <button style="display:none;" onclick=" setTimeout(function(){calcular_AlturaUterina()}, 200);">OBTER PERCENTIS</button>
+      
+         
+  <script>
+	
+	$(function () {
+    // Create a datepicker 
+    $("#AlturaUterina_head").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+      
+   
+                 
+});
+
+function calcular_AlturaUterina() {
+      
+if ($("#AlturaUterina_head_dummy").val() != "Toque para inserir a idade gestacional") { 
+      
+		  var selection = $("#AlturaUterina_head").val();
+          var AlturaUterina = ["18.8-20.7-22.6", "19.7-21.6-23.5", "20.6-22.5-24.4", "21.5-23.4-25.3", "22.4-24.2-26.1", "23.2-25.1-27.0", "24.0-25.9-27.8,", "24.8-26.7-28.6", "25.6-27.5-29.4", "26.3-28.2-30.1", "27.1-29.0-30.8", "27.8-29.7-31.6", "28.5-30.4-32.2", "29.2-31.0-32.9", "29.8-31.7-33.6", "30.4-32.3-34.2", "31.1-32.9-34.8", "31.7-33.5-35.4", "32.2-34.1-36.0", "32.8-34.7-36.6", "33.3-35.2-37.1", "33.8-35.7-37.6", "33.3-36.2-38.1"];
+          
+      var resultado_AlturaUterina =  AlturaUterina[selection].split("-");
+  
+      $(".AlturaUterina_place_result").html("<div class='infoswal'><b>ALTURA UTERINA (cm): <br> <span style='font-weight:100!important;color:#000;font-size:14px;'><div style='display:table;margin:0 auto';margin-top:20px!important;><ul class='tabela_AlturaUterina gray_background'><li>p10</li><li>"+ resultado_AlturaUterina[0] +"</li></ul><ul class='tabela_AlturaUterina'><li>p50</li><li>"+ resultado_AlturaUterina[1] +"</li></ul><ul class='tabela_AlturaUterina gray_background'><li>p95</li><li>"+ resultado_AlturaUterina[2] +"</li></ul></div></span></div>");
+      
+ 
+         /*/
+	    swal({
+                  title: "RESULTADO:",
+                  text: "<div class='infoswal'><b>ALTURA UTERINA (cm): <br> <span style='font-weight:100!important;color:#000;font-size:14px;'><div style='display:table;margin:0 auto';margin-top:20px!important;><ul class='tabela_AlturaUterina gray_background'><li>p10</li><li>"+ resultado_AlturaUterina[0] +"</li></ul><ul class='tabela_AlturaUterina'><li>p50</li><li>"+ resultado_AlturaUterina[1] +"</li></ul><ul class='tabela_AlturaUterina gray_background'><li>p95</li><li>"+ resultado_AlturaUterina[2] +"</li></ul></div></span></div>", 
+                  html:true
+        });
+         /*/        
+                
+   }
+      
+			
+
+          
+        if ($("#AlturaUterina_head_dummy").val() == "Toque para inserir a idade gestacional") { 
+
+            swal("Opa!", "Preencha todos os campos!", "warning")
+            
+        }
+    
+    
+    
+	  }  
+   
+
+      
+      function info_AlturaUterina(){
+             swal({
+                  title: "INFO",
+                  text: "<div class='infoswal'><b><br>REFERÊNCIA BIBLIOGRÁFICA:<br> <span style='font-weight:100!important;color:#000;font-size:14px;'>Martinelli S, Zugaib M. Proposta de nova curva de altura uterina para gestações entre 20 e 42 semanas. Rev Bras Ginecol Obstet (2001).</span></div>", 
+                  html:true,
+                  type: 'info'
+             });
+      }
+      
+      $('#AlturaUterina_head').on('change', function() {
+           setTimeout(function(){calcular_AlturaUterina()}, 200);
+      })
+      
+      
+      
+      function zeratudo_AlturaUterina(){
+          $(".AlturaUterina_place_result").html("<div class='infoswal'><b>ALTURA UTERINA (cm): <br> <span style='font-weight:100!important;color:#000;font-size:14px;'><div style='display:table;margin:0 auto';margin-top:20px!important;><ul class='tabela_AlturaUterina gray_background'><li>p10</li><li>-</li></ul><ul class='tabela_AlturaUterina'><li>p50</li><li>-</li></ul><ul class='tabela_AlturaUterina gray_background'><li>p95</li><li>-</li></ul></div></span></div>");
+          
+      }
+             
+	</script>
+        
+    </div>
+    
+    
+    
+</div>
+    
+    
+    <!-- START_CUSTOM_CODE_homeView -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+    <!--<h1 data-bind="html: title"></h1>-->
+    <!-- END_CUSTOM_CODE_homeView -->

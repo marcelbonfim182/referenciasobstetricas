@@ -205,7 +205,12 @@ a .km-text {
     background:#fff!important;
     color:#888e90!important;
     font-size:14px!important;
-    
+    opacity:1;
+       -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+    min-height:200px!important;    
     
 }
 .campo_input, input {
@@ -273,6 +278,7 @@ a {
     font-size:10px!important;
     opacity:0.5!important;
     -webkit-transform: scale3d(0.9, 0.9, 1);
+    
 }
 
 .infoswal {
@@ -336,5 +342,165 @@ a {
     -webkit-transform: scale3d(0.9, 0.9, 1);;  
 }
 
+.tabela_AlturaUterina {
+    float: left;
+    width: 20%;
+    display: table!important;
+    padding: 0px!important;
+    
+}
+
+.tabela_AlturaUterina li {
+    text-align: center;
+    display: table;
+    list-style-type: none;
+    font-size: 20px;
+    min-width: 0px!important;
+    padding: 14px;
+
+}
+
+.tabela_AlturaUterina li:first-child {
+    color: #D78689;
+    font-weight: bolder!important;
+    font-size: 26px!important;
+    border-bottom: 1px solid #ccc;
+}
+
+.gray_background {
+    
+    background:#f5f5f5;
+}
+
+
+
+
+
+
+.tabela_BiometriaFetal {
+    float: left;
+    width: 14%;
+    display: table!important;
+    padding: 0px!important;
+    margin-top: -24px;
+
+    
+}
+
+.tabela_BiometriaFetal li {
+text-align: center;
+    display: table;
+    list-style-type: none;
+    font-size: 14px;
+    min-width: 39px!important;
+    padding: 4px 0px;
+    min-height: 30px;
+
+}
+
+.tabela_BiometriaFetal li:first-child {
+    color: #D78689;
+    font-weight: bolder!important;
+    font-size: 17px!important;
+    border-bottom: 1px solid #ccc;
+}
+
+.tabs {
+    padding: 0px!important;
+    margin-top: 10px;
+    margin-bottom: -21px;
+    display: table;
+    padding-left: 19px!important;
+
+    
+}
+
+.tabs li {
+ list-style-type: none;
+    float: left;
+    border: 1px #EDEEF2 solid;
+    padding: 10px 10px;
+    background: #ffffff;
+    margin-right: 0px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight:bolder;
+    color: #D78689;
+
+    
+}
+
+.tab_left_selected {
+  border-bottom: 0px #fff solid!important;  
+  border-right: 0px #fff solid!important; 
+}
+
+
+.tab_right_selected {
+  border-bottom: 0px #fff solid!important;  
+  border-left: 0px #fff solid!important; 
+}
+
+
+.pinkfont {
+    color: #D78689!important;
+    font-weight:bolder;
+    border-right: 1px solid #ccc;
+    
+}
+
+.infobutton_tab {
+       margin-top: 24px!important; 
+    
+}
+
+.opacidade_caixa {
+    opacity:0;
+    display:none;
+ }
+
+
+
+
+
+
+
+
+.tabela_BiometriaFetal2 {
+    float: left;
+    width: 16%;
+    display: table!important;
+    padding: 0px!important;
+    
+}
+
+.tabela_BiometriaFetal2 li {
+    text-align: center;
+    display: table;
+    list-style-type: none;
+    min-width: 56px!important;
+    padding: 10px 0px;
+    font-size: 16px;
+
+}
+
+.tabela_BiometriaFetal2 li:first-child {
+    color: #D78689;
+    font-weight: bolder!important;
+    font-size: 26px!important;
+    border-bottom: 1px solid #ccc;
+}
+
+.BiometriaFetal2_place_result, .AlturaUterina_place_result {
+     margin-top: -18px!important;
+    }
+.infobutton_display {
+    display:table!important;
+    
+}
 
 

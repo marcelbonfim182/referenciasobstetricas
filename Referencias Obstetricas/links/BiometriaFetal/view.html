@@ -1,0 +1,334 @@
+<div data-role="view" data-title="View" data-layout="main" data-model="app.BiometriaFetal" data-show="app.BiometriaFetal.onShow" data-after-show="app.BiometriaFetal.afterShow" id="BiometriaFetalScreen" class="screen km-light">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+           
+            <img class="logocabecalho" src="styles/images/logo.svg">
+            
+             <button class="backbutton" onclick="setTimeout(function(){ event.preventDefault ? event.preventDefault() : event.returnValue = false; setTimeout(function(){window.kendo.mobile.application.pane.navigate('#:back')},20); window.NativePageTransitionsKendoAdapter.slide('down', null,'' + 140 + '', '' + 140 + '')}, 200);zeratudo_BiometriaFetal();"></button>
+            <!----<a class="backbutton" href="links/homeView/view.html" data-transition-native-androiddelay="250" data-transition-native-iosdelay="250" data-transition="slide:up" data-role="button" data-click=""></a>-->
+            
+            <!---<span data-bind="text: strings.igusg.title"></span>--->
+
+        </div>
+    </header>
+    <div class="titulo_calculadoras">BIOMETRIA FETAL<br><div class="traco_titulo_calculadoras"></div></div>
+    <button class="infobutton_display info_button infobutton_tab" id="info_buton_BiometriaFetal1" style="display:none;" onclick="setTimeout(function(){info_BiometriaFetal()}, 200);"></button>
+    <button class="info_button infobutton_tab" id="info_buton_BiometriaFetal2" style="display:none;" onclick="setTimeout(function(){info_BiometriaFetal2()}, 200);"></button>
+    
+    <ul class="tabs">
+        <li class="tab_left tab_left_selected" onclick="tab_left()">OMS 2017</li>
+        <li class="tab_right" onclick="tab_right()">Hadlock et al</li>
+    </ul>
+
+    <div class="caixainfo" id="caixainfo1">
+        
+        
+        <div>Idade Gestacional (semanas completas):</div>
+         <select name="BiometriaFetal_head_dummy_head" id="BiometriaFetal_head" class="calcgest campo_select">
+       	 <option  value="0">14 semanas</option>
+            <option  value="1">15 semanas</option>
+			<option  value="2">16 semanas</option>
+            <option  value="3">17 semanas</option>
+            <option  value="4">18 semanas</option>
+			<option  value="5">19 semanas</option>
+            <option  value="6">20 semanas</option>
+            <option  value="7">21 semanas</option>
+			<option  value="8">22 semanas</option>
+            <option  value="9">23 semanas</option>
+            <option  value="10">24 semanas</option>
+			<option  value="11">25 semanas</option>
+            <option  value="12">26 semanas</option>
+            <option  value="13">27 semanas</option>
+			<option  value="14">28 semanas</option>
+            <option  value="15">29 semanas</option>
+            <option  value="16">30 semanas</option>
+			<option  value="17">31 semanas</option>
+            <option  value="18">32 semanas</option>
+            <option  value="19">33 semanas</option>
+			<option  value="20">34 semanas</option>
+            <option  value="21">35 semanas</option>
+            <option  value="22">36 semanas</option>
+             <option  value="23">37 semanas</option>
+             <option  value="24">38 semanas</option> 
+             <option  value="25">39 semanas</option>
+             <option  value="26">40 semanas</option> 
+		</select> 
+        
+        
+        
+        <div class="BiometriaFetal_place_result" style="display:table;"><ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li></ul></div>
+        
+       
+        <button onclick=" setTimeout(function(){calcular_BiometriaFetal()}, 200);" style="display:none;">OBTER PERCENTIS</button>
+      
+         
+  <script>
+	
+	$(function () {
+    // Create a datepicker 
+    $("#BiometriaFetal_head").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+     
+   
+                 
+});
+
+function calcular_BiometriaFetal() {
+      
+if ($("#BiometriaFetal_head_dummy").val() != "Toque para inserir a idade gestacional") { 
+     
+		  var selection = $("#BiometriaFetal_head").val();
+          var BiometriaFetal = ["<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>70</li><li>86</li><li>23</li><li>69</li><li>10</li><li>10</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>78</li><li>91</li><li>24</li><li>73</li><li>11</li><li>11</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>90</li><li>100</li><li>27</li><li>81</li><li>14</li><li>13</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>98</li><li>104</li><li>28</li><li>86</li><li>15</li><li>14</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>104</li><li>107</li><li>29</li><li>89</li><li>16</li><li>15</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>109</li><li>110</li><li>30</li><li>92</li><li>16</li><li>16</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>89</li><li>97</li><li>26</li><li>79</li><li>13</li><li>12</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>99</li><li>102</li><li>27</li><li>83</li><li>14</li><li>14</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>114</li><li>111</li><li>30</li><li>92</li><li>16</li><li>16</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>124</li><li>115</li><li>31</li><li>96</li><li>18</li><li>17</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>132</li><li>119</li><li>32</li><li>100</li><li>19</li><li>18</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>138</li><li>122</li><li>33</li><li>103</li><li>19</li><li>19</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>113</li><li>108</li><li>29</li><li>89</li><li>16</li><li>15</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>124</li><li>114</li><li>30</li><li>93</li><li>17</li><li>17</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>144</li><li>123</li><li>33</li><li>103</li><li>19</li><li>19</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>155</li><li>128</li><li>35</li><li>108</li><li>21</li><li>20</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>166</li><li>132</li><li>36</li><li>112</li><li>22</li><li>22</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>174</li><li>134</li><li>37</li><li>115</li><li>22</li><li>22</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>141</li><li>120</li><li>32</li><li>99</li><li>19</li><li>19</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>155</li><li>126</li><li>33</li><li>104</li><li>20</li><li>20</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>179</li><li>135</li><li>36</li><li>114</li><li>23</li><li>22</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>193</li><li>140</li><li>38</li><li>119</li><li>24</li><li>24</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>207</li><li>144</li><li>39</li><li>124</li><li>25</li><li>25</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>217</li><li>147</li><li>40</li><li>127</li><li>25</li><li>26</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>174</li><li>132</li><li>35</li><li>110</li><li>22</li><li>22</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>192</li><li>138</li><li>37</li><li>116</li><li>23</li><li>23</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>222</li><li>148</li><li>40</li><li>126</li><li>26</li><li>26</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>239</li><li>153</li><li>41</li><li>131</li><li>27</li><li>27</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>255</li><li>157</li><li>43</li><li>136</li><li>28</li><li>28</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>268</li><li>160</li><li>44</li><li>139</li><li>28</li><li>29</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>214</li><li>145</li><li>38</li><li>121</li><li>25</li><li>25</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>235</li><li>150</li><li>40</li><li>127</li><li>26</li><li>26</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>272</li><li>161</li><li>43</li><li>138</li><li>28</li><li>29</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>292</li><li>166</li><li>45</li><li>143</li><li>30</li><li>30</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>313</li><li>170</li><li>46</li><li>148</li><li>31</li><li>31</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>328</li><li>173</li><li>47</li><li>152</li><li>31</li><li>32</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>260</li><li>157</li><li>41</li><li>132</li><li>27</li><li></li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>286</li><li>163</li><li>43</li><li>139</li><li>29</li><li>30</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>330</li><li>173</li><li>47</li><li>150</li><li>31</li><li>32</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>355</li><li>179</li><li>48</li><li>155</li><li>32</li><li>33</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>380</li><li>183</li><li>50</li><li>161</li><li>33</li><li>35</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>399</li><li>186</li><li>51</li><li>164</li><li>34</li><li>35</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>314</li><li>169</li><li>44</li><li>143</li><li>30</li><li>31</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>345</li><li>175</li><li>46</li><li>150</li><li>31</li><li>33</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>398</li><li>186</li><li>50</li><li>162</li><li>34</li><li>35</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>428</li><li>191</li><li>52</li><li>168</li><li>35</li><li>36</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>458</li><li>196</li><li>53</li><li>173</li><li>36</li><li>38</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>481</li><li>199</li><li>54</li><li>177</li><li>37</li><li>38</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>375</li><li>181</li><li>47</li><li>154</li><li>32</li><li>34</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>412</li><li>187</li><li>50</li><li>162</li><li>34</li><li>35</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>476</li><li>198</li><li>53</li><li>173</li><li>36</li><li>38</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>512</li><li>204</li><li>55</li><li>180</li><li>37</li><li>39</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>548</li><li>209</li><li>57</li><li>186</li><li>39</li><li>40</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>575</li><li>212</li><li>58</li><li>189</li><li>39</li><li>41</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>445</li><li>193</li><li>50</li><li>165</li><li>34</li><li>36</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>489</li><li>199</li><li>53</li><li>173</li><li>36</li><li>38</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>565</li><li>210</li><li>57</li><li>185</li><li>38</li><li>41</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>608</li><li>216</li><li>59</li><li>192</li><li>40</li><li>42</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>650</li><li>221</li><li>60</li><li>198</li><li>41</li><li>43</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>682</li><li>224</li><li>61</li><li>202</li><li>42</li><li>44</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>523</li><li>204</li><li>53</li><li>176</li><li>36</li><li>39</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>576</li><li>211</li><li>56</li><li>184</li><li>38</li><li>41</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>665</li><li>222</li><li>60</li><li>197</li><li>41</li><li>43</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>715</li><li>228</li><li>62</li><li>203</li><li>42</li><li>45</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>765</li><li>233</li><li>64</li><li>210</li><li>43</li><li>46</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>803</li><li>236</li><li>65</li><li>214</li><li>44</li><li>47</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>611</li><li>215</li><li>56</li><li>186</li><li>38</li><li>41</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>673</li><li>222</li><li>59</li><li>195</li><li>40</li><li>43</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>778</li><li>233</li><li>63</li><li>208</li><li>42</li><li>46</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>836</li><li>239</li><li>65</li><li>215</li><li>44</li><li>47</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>894</li><li>245</li><li>67</li><li>222</li><li>45</li><li>48</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>938</li><li>248</li><li>68</li><li>226</li><li>46</li><li>49</li></ul>",       "<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>707</li><li>225</li><li>59</li><li>196</li><li>40</li><li>43</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>780</li><li>232</li><li>62</li><li>205</li><li>42</li><li>45</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>902</li><li>244</li><li>66</li><li>219</li><li>44</li><li>48</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>971</li><li>250</li><li>68</li><li>226</li><li>46</li><li>49</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>1038</li><li>256</li><li>70</li><li>233</li><li>47</li><li>51</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>1087</li><li>259</li><li>71</li><li>238</li><li>48</li><li>51</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>813</li><li>234</li><li>62</li><li>206</li><li>42</li><li>46</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>898</li><li>242</li><li>65</li><li>215</li><li>43</li><li>47</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>1039</li><li>254</li><li>69</li><li>230</li><li>46</li><li>50</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>1118</li><li>261</li><li>71</li><li>237</li><li>47</li><li>52</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>1196</li><li>267</li><li>73</li><li>245</li><li>49</li><li>53</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>1251</li><li>270</li><li>74</li><li>249</li><li>50</li><li>54</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>929</li><li>243</li><li>64</li><li>215</li><li>43</li><li>48</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>1026</li><li>251</li><li>67</li><li>225</li><li>45</li><li>49</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>1189</li><li>264</li><li>72</li><li>240</li><li>48</li><li>52</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>1279</li><li>270</li><li>74</li><li>248</li><li>49</li><li>54</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>1368</li><li>277</li><li>76</li><li>256</li><li>51</li><li>55</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>1429</li><li>280</li><li>77</li><li>260</li><li>52</li><li>56</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>1053</li><li>251</li><li>67</li><li>224</li><li>45</li><li>50</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>1165</li><li>260</li><li>70</li><li>234</li><li>47</li><li>51</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>1350</li><li>273</li><li>74</li><li>250</li><li>49</li><li>54</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>1453</li><li>280</li><li>76</li><li>258</li><li>51</li><li>56</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>1554</li><li>286</li><li>78</li><li>266</li><li>52</li><li>57</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>1622</li><li>290</li><li>80</li><li>271</li><li>53</li><li>58</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>1185</li><li>259</li><li>69</li><li>233</li><li>46</li><li>51</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>1313</li><li>268</li><li>72</li><li>243</li><li>48</li><li>53</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>1523</li><li>281</li><li>77</li><li>260</li><li>51</li><li>56</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>1640</li><li>288</li><li>79</li><li>269</li><li>53</li><li>58</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>1753</li><li>295</li><li>81</li><li>277</li><li>54</li><li>60</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>1828</li><li>299</li><li>82</li><li>282</li><li>55</li><li>60</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>1326</li><li>266</li><li>71</li><li>241</li><li>48</li><li>53</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>1470</li><li>275</li><li>74</li><li>252</li><li>50</li><li>55</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>1707</li><li>289</li><li>79</li><li>269</li><li>53</li><li>59</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>1838</li><li>296</li><li>81</li><li>279</li><li>54</li><li>60</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>1964</li><li>303</li><li>83</li><li>287</li><li>56</li><li>62</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>2046</li><li>307</li><li>85</li><li>292</li><li>57</li><li>63</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>1473</li><li>273</li><li>73</li><li>249</li><li>49</li><li>55</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>1635</li><li>282</li><li>76</li><li>260</li><li>51</li><li>57</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>1901</li><li>296</li><li>81</li><li>279</li><li>54</li><li>61</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>2047</li><li>304</li><li>83</li><li>288</li><li>56</li><li>62</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>2187</li><li>311</li><li>86</li><li>298</li><li>57</li><li>64</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>2276</li><li>315</li><li>87</li><li>303</li><li>59</li><li>65</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>1626</li><li>279</li><li>75</li><li>257</li><li>51</li><li>57</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>1807</li><li>289</li><li>78</li><li>269</li><li>53</li><li>60</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>2103</li><li>303</li><li>83</li><li>288</li><li>56</li><li>63</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>2266</li><li>311</li><li>86</li><li>298</li><li>58</li><li>65</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>2419</li><li>318</li><li>88</li><li>308</li><li>59</li><li>66</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>2516</li><li>322</li><li>89</li><li>313</li><li>60</li><li>67</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>1785</li><li>285</li><li>77</li><li>265</li><li>53</li><li>59</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>1985</li><li>295</li><li>80</li><li>277</li><li>54</li><li>61</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>2312</li><li>309</li><li>85</li><li>298</li><li>58</li><li>65</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>2492</li><li>317</li><li>88</li><li>308</li><li>59</li><li>67</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>2659</li><li>324</li><li>90</li><li>318</li><li>61</li><li>68</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>2764</li><li>328</li><li>91</li><li>324</li><li>62</li><li>69</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>1948</li><li>291</li><li>79</li><li>273</li><li>54</li><li>61</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>2167</li><li>300</li><li>82</li><li>286</li><li>56</li><li>63</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>2527</li><li>315</li><li>87</li><li>307</li><li>59</li><li>67</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>2723</li><li>323</li><li>89</li><li>318</li><li>61</li><li>69</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>2904</li><li>330</li><li>92</li><li>329</li><li>62</li><li>70</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>3018</li><li>335</li><li>93/li><li>335</li><li>63</li><li>71</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>2113</li><li>296</li><li>80</li><li>282</li><li>55</li><li>63</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>2352</li><li>306</li><li>84</li><li>294</li><li>57</li><li>65</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>2745</li><li>321</li><li>89</li><li>317</li><li>61</li><li>69</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>2959</li><li>329</li><li>91</li><li>329</li><li>62</li><li>70</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>3153</li><li>336</li><li>93</li><li>340</li><li>64</li><li>72</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>3277</li><li>340</li><li>95</li><li>346</li><li>65</li><li>73</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>2280</li><li>302</li><li>82</li><li>290</li><li>56</li><li>65</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>2537</li><li>311</li><li>85</li><li>304</li><li>58</li><li>67</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>2966</li><li>326</li><li>90</li><li>328</li><li>62</li><li>70</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>3195</li><li>334</li><li>93</li><li>340</li><li>64</li><li>72</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>3403</li><li>341</li><li>95</li><li>352</li><li>65</li><li>74</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>3538</li><li>345</li><li>96</li><li>358</li><li>66</li><li>75</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>2446</li><li>307</li><li>84</li><li>299</li><li>57</li><li>66</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>2723</li><li>315</li><li>87</li><li>313</li><li>59</li><li>68</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>3186</li><li>332</li><li>92</li><li>338</li><li>63</li><li>72</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>3432</li><li>339</li><li>95</li><li>351</li><li>65</li><li>74</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>3652</li><li>347</li><li>97</li><li>364</li><li>66</li><li>75</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>3799</li><li>350</li><li>98</li><li>371</li><li>67</li><li>77</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>2612</li><li>313</li><li>85</li><li>309</li><li>58</li><li>67</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>2905</li><li>320</li><li>89</li><li>324</li><li>60</li><li>69</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>3403</li><li>337</li><li>94</li><li>350</li><li>64</li><li>73</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>3664</li><li>344</li><li>96</li><li>363</li><li>65</li><li>75</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>3897</li><li>352</li><li>99</li><li>377</li><li>67</li><li>76</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>4058</li><li>355</li><li>100</li><li>384</li><li>68</li><li>78</li></ul>","<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>2775</li><li>319</li><li>87</li><li>319</li><li>57</li><li>68</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>3084</li><li>325</li><li>90</li><li>335</li><li>60</li><li>69</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>3617</li><li>342</li><li>96</li><li>363</li><li>64</li><li>73</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>3892</li><li>350</li><li>98</li><li>377</li><li>66</li><li>75</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>4135</li><li>357</li><li>100</li><li>391</li><li>68</li><li>77</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>4312</li><li>360</li><li>101</li><li>399</li><li>69</li><li>78</li></ul>" ];
+          var resultado_BiometriaFetal = BiometriaFetal[selection];
+
+      
+          $(".BiometriaFetal_place_result").html(resultado_BiometriaFetal);
+      
+    
+        /*/
+		    	swal({
+                  title: "RESULTADO:",
+                  text: "<div class='infoswal'><b>BIOMETRIA FETAL (cm): <br> <span style='font-weight:100!important;color:#000;font-size:14px;'><div style='display:table;margin:0 auto';margin-top:20px!important;><ul class='tabela_BiometriaFetal gray_background'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>ÚMERO</li><li>FÊMUR</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li></ul></div></span></span></div>", 
+                  html:true
+             });
+                
+         /*/        
+        }
+      
+			
+
+          
+        if ($("#BiometriaFetal_head_dummy").val() == "Toque para inserir a idade gestacional") { 
+
+            swal("Opa!", "Preencha todos os campos!", "warning")
+            
+        }
+    
+    
+    
+	  }  
+   
+
+      
+      function info_BiometriaFetal(){
+             swal({
+                  title: "INFO",
+                  text: "<div class='infoswal'><b><br>REFERÊNCIA BIBLIOGRÁFICA:</b> <br><span style='text-align:left!important;font-weight:100!important;color:#000;font-size:14px;'>Gráficos de Crescimento OMS - 2017.</span><br><br> <b>ABREVIAÇÕES:</b><br><span style='text-align:left!important;font-weight:100!important;color:#000;font-size:14px;'>PFE: peso fetal estimado (g)<br>CC: circunferência cefálica (mm)<br>DBP: diâmetro biparietal (mm)<br>CA: circunferência abdominal (mm)<br>UMR: úmero (mm)<br>FMR: fêmur (mm)</span></div>", 
+                  html:true,
+                  type: 'info'
+             });
+      }
+      
+     
+      $('#BiometriaFetal_head').on('change', function() {
+           setTimeout(function(){calcular_BiometriaFetal()}, 200);
+        })
+
+      
+      function tab_right(){
+        $(".tab_left").removeClass("tab_left_selected");
+        $(".tab_right").addClass("tab_right_selected");
+        
+        $("#caixainfo1").addClass("opacidade_caixa");
+        $("#caixainfo2").removeClass("opacidade_caixa");
+          
+        $("#info_buton_BiometriaFetal2").addClass("infobutton_display");
+        $("#info_buton_BiometriaFetal1").removeClass("infobutton_display");
+          
+       };
+      
+       function tab_left(){
+        $(".tab_left").addClass("tab_left_selected");
+        $(".tab_right").removeClass("tab_right_selected");
+        
+        $("#caixainfo2").addClass("opacidade_caixa");
+        $("#caixainfo1").removeClass("opacidade_caixa");
+           
+        $("#info_buton_BiometriaFetal1").addClass("infobutton_display");
+        $("#info_buton_BiometriaFetal2").removeClass("infobutton_display");
+       
+       };
+      
+      
+             
+	</script>
+        
+    </div>
+    
+    
+  
+    
+    <div class="caixainfo opacidade_caixa" id="caixainfo2">
+        
+        
+        
+        
+        <div>Idade Gestacional (semanas completas):</div>
+         <select name="BiometriaFetal2_head_dummy_head" id="BiometriaFetal2_head" class="calcgest campo_select">
+       	 <option  value="0">10 semanas</option>
+            <option  value="1">11 semanas</option>
+            <option  value="2">12 semanas</option>
+            <option  value="3">13 semanas</option>
+            <option  value="4">14 semanas</option>
+            <option  value="5">15 semanas</option>
+			<option  value="6">16 semanas</option>
+            <option  value="7">17 semanas</option>
+            <option  value="8">18 semanas</option>
+			<option  value="9">19 semanas</option>
+            <option  value="10">20 semanas</option>
+            <option  value="11">21 semanas</option>
+			<option  value="12">22 semanas</option>
+            <option  value="13">23 semanas</option>
+            <option  value="14">24 semanas</option>
+			<option  value="15">25 semanas</option>
+            <option  value="16">26 semanas</option>
+            <option  value="17">27 semanas</option>
+			<option  value="18">28 semanas</option>
+            <option  value="19">29 semanas</option>
+            <option  value="20">30 semanas</option>
+			<option  value="21">31 semanas</option>
+            <option  value="22">32 semanas</option>
+            <option  value="23">33 semanas</option>
+			<option  value="24">34 semanas</option>
+            <option  value="25">35 semanas</option>
+            <option  value="26">36 semanas</option>
+             <option  value="27">37 semanas</option>
+             <option  value="28">38 semanas</option> 
+             <option  value="29">39 semanas</option>
+             <option  value="30">40 semanas</option> 
+		</select> 
+        
+        
+      
+        <div class="BiometriaFetal2_place_result" style="display:table;">
+               <div class='infoswal'>
+                   <b>PESO FETAL ESTIMADO (gramas): <br> 
+                       <span style='font-weight:100!important;color:#000;font-size:14px;'>
+                           <div style='display:table;margin:0 auto;'>
+                               <ul class='tabela_BiometriaFetal2 gray_background'>
+                                   <li>p3</li>
+                                   <li>-</li>
+                               </ul>
+                               <ul class='tabela_BiometriaFetal2'>
+                                   <li>p10</li>
+                                   <li>-</li>
+                               </ul>
+                               <ul class='tabela_BiometriaFetal2 gray_background'>
+                                   <li>p50</li>
+                                   <li>-</li>
+                               </ul>
+                               <ul class='tabela_BiometriaFetal2'>
+                                   <li>p90</li>
+                                   <li>-</li>
+                               </ul>
+                               <ul class='tabela_BiometriaFetal2 gray_background'>
+                                   <li>p97</li>
+                                   <li>-</li>
+                               </ul>
+                           </div>
+                           </span>
+                           </b>
+                       
+               </div>
+        </div>
+        
+       
+        <button onclick=" setTimeout(function(){calcular_BiometriaFetal2()}, 200);" style="display:none;">OBTER PERCENTIS</button>
+      
+         
+  <script>
+	
+	$(function () {
+    // Create a datepicker 
+    $("#BiometriaFetal2_head").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+     
+   
+                 
+});
+
+function calcular_BiometriaFetal2() {
+      
+if ($("#BiometriaFetal2_head_dummy").val() != "Toque para inserir a idade gestacional") { 
+     
+		  var selection2 = $("#BiometriaFetal2_head").val();
+          var BiometriaFetal2 = ["26-29-35-41-44","34-37-45-53-56","43-48-58-68-73","55-61-73-85-91","70-77-93-109-116","88-97-117-137-146","110-121-146-171-183","136-150-181-212-226","167-185-223-261-279","205-227-273-319-341","248-275-331-387-414","299-331-399-467-499","359-398-478-559-598","426-471-568-665-710","503-556-670-784-838","589-652-785-918-981","685-758-913-1068-1141","791-879-1055-1234-1319","908-1004-1210-1416-1513","1034-1145-1379-1613-1754","1169-1294-1559-1824-1949","1313-1453-1751-2049-2189","1465-1621-1953-2285-2441","1622-1794-2162-2530-2703","1783-1973-2377-2781-2971","1946-2154-2595-3036-3244","2110-2335-2813-3291-3516","2271-2513-3028-3543-3785","2427-2686-3236-3786-4045","2576-2851-3435-4019-4294","2714-3004-3619-4234-4524"];
+          
+          var resultado_BiometriaFetal2 = BiometriaFetal2[selection2].split("-");
+  
+          $(".BiometriaFetal2_place_result").html("<div class='infoswal'><b>PESO FETAL ESTIMADO (gramas): <br> <span style='font-weight:100!important;color:#000;font-size:14px;'><div style='display:table;margin:0 auto'><ul class='tabela_BiometriaFetal2 gray_background'><li>p3</li><li>"+ resultado_BiometriaFetal2[0] +"</li></ul><ul class='tabela_BiometriaFetal2'><li>p10</li><li>"+ resultado_BiometriaFetal2[1] +"</li></ul><ul class='tabela_BiometriaFetal2 gray_background'><li>p50</li><li>"+ resultado_BiometriaFetal2[2] +"</li></ul><ul class='tabela_BiometriaFetal2'><li>p90</li><li>"+ resultado_BiometriaFetal2[3] +"</li></ul><ul class='tabela_BiometriaFetal2 gray_background'><li>p97</li><li>"+ resultado_BiometriaFetal2[4] +"</li></ul></div></span></b></div>");
+     
+    
+        /*/
+		    	swal({
+                  title: "RESULTADO:",
+                  text: "<div class='infoswal'><b>BIOMETRIA FETAL (cm): <br> <span style='font-weight:100!important;color:#000;font-size:14px;'><div style='display:table;margin:0 auto';margin-top:20px!important;><ul class='tabela_BiometriaFetal gray_background'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>ÚMERO</li><li>FÊMUR</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li></ul></div></span></span></div>", 
+                  html:true
+             });
+                
+         /*/        
+        }
+      
+			
+
+          
+        if ($("#BiometriaFetal2_head_dummy").val() == "Toque para inserir a idade gestacional") { 
+
+            swal("Opa!", "Preencha todos os campos!", "warning")
+            
+        }
+    
+    
+    
+	  }  
+   
+
+      
+      function info_BiometriaFetal2(){
+             swal({
+                  title: "INFO",
+                  text: "<div class='infoswal'><b><br>REFERÊNCIA BIBLIOGRÁFICA:</b> <br><span style='text-align:left!important;font-weight:100!important;color:#000;font-size:14px;'>FP Hadlock, RB Harrist, J Martinez-poyer.In utero analysis of fetal growth: A sonographic Weight standard.Radiology 1991:181:129-33.</span></div>", 
+                  html:true,
+                  type: 'info'
+             });
+      }
+      
+     
+      $('#BiometriaFetal2_head').on('change', function() {
+           setTimeout(function(){calcular_BiometriaFetal2()}, 200);
+        });
+      
+      
+      function zeratudo_BiometriaFetal(){
+          $(".BiometriaFetal_place_result").html("<ul class='tabela_BiometriaFetal gray_background pinkfont'><li></li><li>PFE</li><li>CC</li><li>DBP</li><li>CA</li><li>UMR</li><li>FMR</li></ul><ul class='tabela_BiometriaFetal'><li>p2,5</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p10</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li></ul><ul class='tabela_BiometriaFetal'><li>p50</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p75</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li></ul><ul class='tabela_BiometriaFetal'><li>p90</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li></ul><ul class='tabela_BiometriaFetal gray_background'><li>p95</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li><li>-</li></ul>");
+          $(".BiometriaFetal2_place_result").html("<div class='infoswal'><b>PESO FETAL ESTIMADO (gramas): <br> <span style='font-weight:100!important;color:#000;font-size:14px;'><div style='display:table;margin:0 auto'><ul class='tabela_BiometriaFetal2 gray_background'><li>p3</li><li>-</li></ul><ul class='tabela_BiometriaFetal2'><li>p10</li><li>-</li></ul><ul class='tabela_BiometriaFetal2 gray_background'><li>p50</li><li>-</li></ul><ul class='tabela_BiometriaFetal2'><li>p90</li><li>-</li></ul><ul class='tabela_BiometriaFetal2 gray_background'><li>p97</li><li>-</li></ul></div></span></b></div>");
+      }
+        
+     </script>   
+        
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</div>
+    
+    
+    <!-- START_CUSTOM_CODE_homeView -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+    <!--<h1 data-bind="html: title"></h1>-->
+    <!-- END_CUSTOM_CODE_homeView -->
