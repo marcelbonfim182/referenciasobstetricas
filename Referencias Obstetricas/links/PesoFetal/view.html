@@ -15,12 +15,12 @@
     <button class="infobutton_display info_button infobutton_tab" id="info_buton_PesoFetal1" style="display:none;" onclick="setTimeout(function(){info_PesoFetal()}, 200);"></button>
     <button class="info_button infobutton_tab" id="info_buton_PesoFetal2" style="display:none;" onclick="setTimeout(function(){info_PesoFetal2()}, 200);"></button>
     
-    <ul class="tabs">
+    <ul class="tabs" id="PesoFetal_tabs">
         <li class="tab_left tab_left_selected" onclick="tab_left()">DBP, CC, CA, FMR</li>
         <li class="tab_right" onclick="tab_right()">CA, FMR</li>
     </ul>
     
-    <div class="caixainfo" id="caixainfo1">
+    <div class="caixainfo" id="caixainfo1_PesoFetal">
         
        <form action="" id="form"> 
             <ul class="input_list">
@@ -95,11 +95,11 @@
      
       
       function tab_right(){
-        $(".tab_left").removeClass("tab_left_selected");
-        $(".tab_right").addClass("tab_right_selected");
+        $("#PesoFetal_tabs .tab_left").removeClass("tab_left_selected");
+        $("#PesoFetal_tabs .tab_right").addClass("tab_right_selected");
         
-        $("#caixainfo1").addClass("opacidade_caixa");
-        $("#caixainfo2").removeClass("opacidade_caixa");
+        $("#caixainfo1_PesoFetal").addClass("opacidade_caixa");
+        $("#caixainfo2_PesoFetal").removeClass("opacidade_caixa");
           
         $("#info_buton_BiometriaFetal2").addClass("infobutton_display");
         $("#info_buton_BiometriaFetal1").removeClass("infobutton_display");
@@ -107,11 +107,11 @@
        };
       
        function tab_left(){
-        $(".tab_left").addClass("tab_left_selected");
-        $(".tab_right").removeClass("tab_right_selected");
+        $("#PesoFetal_tabs .tab_left").addClass("tab_left_selected");
+        $("#PesoFetal_tabs .tab_right").removeClass("tab_right_selected");
         
-        $("#caixainfo2").addClass("opacidade_caixa");
-        $("#caixainfo1").removeClass("opacidade_caixa");
+        $("#caixainfo2_PesoFetal").addClass("opacidade_caixa");
+        $("#caixainfo1_PesoFetal").removeClass("opacidade_caixa");
            
         $("#info_buton_PesoFetal1").addClass("infobutton_display");
         $("#info_buton_PesoFetal2").removeClass("infobutton_display");
@@ -133,7 +133,7 @@
     
   
     
-    <div class="caixainfo opacidade_caixa" id="caixainfo2">
+    <div class="caixainfo opacidade_caixa" id="caixainfo2_PesoFetal">
        
         <form action="" id="form2"> 
             <ul class="input_list">
