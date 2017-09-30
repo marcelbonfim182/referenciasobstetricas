@@ -1,0 +1,221 @@
+<div data-role="view" data-title="View" data-layout="main" data-model="app.PesoFetal" data-show="app.PesoFetal.onShow" data-after-show="app.PesoFetal.afterShow" id="PesoFetalScreen" class="screen km-light">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+           
+            <img class="logocabecalho" src="styles/images/logo.svg">
+            
+             <button class="backbutton" onclick="setTimeout(function(){ event.preventDefault ? event.preventDefault() : event.returnValue = false; setTimeout(function(){window.kendo.mobile.application.pane.navigate('#:back')},20); window.NativePageTransitionsKendoAdapter.slide('down', null,'' + 140 + '', '' + 140 + '')}, 200);zeratudo_PesoFetal();zeratudo_PesoFetal2();"></button>
+            <!----<a class="backbutton" href="links/homeView/view.html" data-transition-native-androiddelay="250" data-transition-native-iosdelay="250" data-transition="slide:up" data-role="button" data-click=""></a>-->
+            
+            <!---<span data-bind="text: strings.igusg.title"></span>--->
+
+        </div>
+    </header>
+    <div class="titulo_calculadoras">PESO FETAL<br><div class="traco_titulo_calculadoras"></div></div>
+    <button class="infobutton_display info_button infobutton_tab" id="info_buton_PesoFetal1" style="display:none;" onclick="setTimeout(function(){info_PesoFetal()}, 200);"></button>
+    <button class="info_button infobutton_tab" id="info_buton_PesoFetal2" style="display:none;" onclick="setTimeout(function(){info_PesoFetal2()}, 200);"></button>
+    
+    <ul class="tabs">
+        <li class="tab_left tab_left_selected" onclick="tab_left()">DBP, CC, CA, FMR</li>
+        <li class="tab_right" onclick="tab_right()">CA, FMR</li>
+    </ul>
+    
+    <div class="caixainfo" id="caixainfo1">
+        
+       <form action="" id="form"> 
+            <ul class="input_list">
+                <li><span>Diâmetro Biperidal (DBP): </span><input type="number" name="DBP" class="inputlist_input" placeholder="mm" id="DBPmm"></li>
+                <li><span>Circunferência Cefálica (CC): </span><input type="number" name="PC" class="inputlist_input"  placeholder="mm" id="PCmm"></li>
+                <li><span>Circunferência Abdominal (CA): </span><input type="number" name="PA" class="inputlist_input"  placeholder="mm" id="PAmm"></li>
+                <li><span>Comprimento Fêmur (CF): </span><input type="number" name="LF" class="inputlist_input"  placeholder="mm" id="LFmm"></li>
+            </ul>
+       </form>   
+        
+       
+        <button onclick=" setTimeout(function(){calcular_PesoFetal()}, 200);">CALCULAR PESO</button>
+      
+         
+  <script>
+      
+	    jQuery.extend(jQuery.expr[':'], {
+            focusable: function (el, index, selector) {
+                return $(el).is('a, button, :input, [tabindex]');
+            }
+        });
+      
+        $("#form").on('keydown', ':focusable', function (e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                // Get all focusable elements on the page
+                var $canfocus = $(':focusable');
+                var index = $canfocus.index(this) + 1;
+                if (index >= $canfocus.length) index = 0;
+                $canfocus.eq(index).focus();
+            }
+        });
+	
+
+      
+        function calcular_PesoFetal() {
+      
+           if ($("#DBPmm").val() == "" || $("#PCmm").val() == "" || $("#PAmm").val() == "" || $("#LFmm").val() == "") { 
+
+            swal("Opa!", "Preencha todos os campos!", "warning")
+            
+           } else {
+      
+         
+                var e = $("#DBPmm").val(),
+                    t = $("#PCmm").val(),
+                    a = $("#PAmm").val(),
+                    s = $("#LFmm").val(),
+                    r = parseInt(Math.pow(10, 1.3596 - .00386 * Number(a) / 10 * Number(s) / 10 + .0064 * Number(t) / 10 + 61e-5 * Number(e) / 10 * Number(a) / 10 + .0425 * Number(a) / 10 + .174 * Number(s) / 10));
+                    //alert("Weight is " + r + " g")
+                     
+                 swal({
+                      title: "RESULTADO:",
+                      text: "<div class='infoswal'><b>PESO FETAL ESTIMADO: <br> <span style='font-weight:100!important;color:#000;font-size:14px;'>"+ r +" gramas.</span></div>", 
+                      html:true
+                 });
+         
+            }
+      }
+          
+
+      
+      function info_PesoFetal(){
+             swal({
+                  title: "INFO",
+                  text: "<div class='infoswal'><b><br>REFERÊNCIA BIBLIOGRÁFICA:</b> <br><br><span style='text-align:left!important;font-weight:100!important;color:#000;font-size:14px;'>Hadlock FP. Estimation of fetal weight with the use of head, body and femur measurements a prospective study. Am J Obstet Gynecol 1985;151(3):333.</span><br><br><span style='text-align:left!important;font-weight:100!important;color:#000;font-size:14px;'>Hadlock FP. Sonographic estimation of fetal weight. The value of femur length in addition to head and abdomen measurements. Radiology, 1984 Feb; 150(2):535.</span></div>", 
+                  html:true,
+                  type: 'info'
+             });
+      }
+      
+     
+      
+      function tab_right(){
+        $(".tab_left").removeClass("tab_left_selected");
+        $(".tab_right").addClass("tab_right_selected");
+        
+        $("#caixainfo1").addClass("opacidade_caixa");
+        $("#caixainfo2").removeClass("opacidade_caixa");
+          
+        $("#info_buton_BiometriaFetal2").addClass("infobutton_display");
+        $("#info_buton_BiometriaFetal1").removeClass("infobutton_display");
+          
+       };
+      
+       function tab_left(){
+        $(".tab_left").addClass("tab_left_selected");
+        $(".tab_right").removeClass("tab_right_selected");
+        
+        $("#caixainfo2").addClass("opacidade_caixa");
+        $("#caixainfo1").removeClass("opacidade_caixa");
+           
+        $("#info_buton_BiometriaFetal1").addClass("infobutton_display");
+        $("#info_buton_BiometriaFetal2").removeClass("infobutton_display");
+       
+       };
+      
+     function zeratudo_PesoFetal(){
+          $("#DBPmm").val("");
+          $("#PCmm").val("");
+          $("#PAmm").val("");
+          $("#LFmm").val("");
+      }
+      
+             
+	</script>
+        
+    </div>
+    
+    
+  
+    
+    <div class="caixainfo opacidade_caixa" id="caixainfo2">
+       
+        <form action="" id="form2"> 
+            <ul class="input_list">
+                <li><span>Circunferência Abdominal (CA): </span><input type="number" name="DBP" class="inputlist_input" placeholder="mm" id="PAmm_hadlock"></li>
+                <li><span>Comprimento do Fêmur (FMR): </span><input type="number" name="PC" class="inputlist_input"  placeholder="mm" id="LFmm_hadlock"></li>
+            </ul>
+       </form>   
+        
+       
+        <button onclick=" setTimeout(function(){calcular_PesoFetal2()}, 200);">CALCULAR PESO</button>
+      
+         
+  <script>
+      
+      
+        $("#form2").on('keydown', ':focusable', function (e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                // Get all focusable elements on the page
+                var $canfocus = $(':focusable');
+                var index = $canfocus.index(this) + 1;
+                if (index >= $canfocus.length) index = 0;
+                $canfocus.eq(index).focus();
+            }
+        });
+	
+
+      
+        function calcular_PesoFetal2() {
+      
+           if ($("#PAmm_hadlock").val() == "" || $("#LFmm_hadlock").val() == "") { 
+
+            swal("Opa!", "Preencha todos os campos!", "warning")
+            
+           } else {
+      
+         
+                var e = $("#PAmm_hadlock").val(),
+                    t = $("#LFmm_hadlock").val(),
+                    a = parseInt(Math.pow(10, 1.304 + .005281 * Number(e) + .01938 * Number(t) - 4e-5 * Number(t) * Number(e)));
+                //alert("Weight is " + a)
+                     
+                 swal({
+                      title: "RESULTADO:",
+                      text: "<div class='infoswal'><b>PESO FETAL ESTIMADO: <br> <span style='font-weight:100!important;color:#000;font-size:14px;'>"+ a +" gramas.</span></div>", 
+                      html:true
+                 });
+         
+            }
+      }
+          
+
+      
+      function info_PesoFetal2(){
+             swal({
+                  title: "INFO",
+                  text: "<div class='infoswal'><b><br>REFERÊNCIA BIBLIOGRÁFICA:</b> <br><br><span style='text-align:left!important;font-weight:100!important;color:#000;font-size:14px;'>Hadlock FP. Estimation of fetal weight with the use of head, body and femur measurements a prospective study. Am J Obstet Gynecol 1985;151(3):333.</span><br><br><span style='text-align:left!important;font-weight:100!important;color:#000;font-size:14px;'>Hadlock FP. Sonographic estimation of fetal weight. The value of femur length in addition to head and abdomen measurements. Radiology, 1984 Feb; 150(2):535.</span></div>", 
+                  html:true,
+                  type: 'info'
+             });
+      }
+      
+      
+     
+      
+     
+     function zeratudo_PesoFetal2(){
+            $("#PAmm_hadlock").val("");
+            $("#LFmm_hadlock").val("");
+      } 
+             
+	</script>
+        
+    </div>
+    
+    
+
+    
+</div>
+    
+    
+    <!-- START_CUSTOM_CODE_homeView -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+    <!--<h1 data-bind="html: title"></h1>-->
+    <!-- END_CUSTOM_CODE_homeView -->

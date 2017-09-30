@@ -1,0 +1,169 @@
+<div data-role="view" data-title="View" data-layout="main" data-model="app.ila" data-show="app.ila.onShow" data-after-show="app.ila.afterShow" id="ilaScreen" class="screen km-light">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+           
+            <img class="logocabecalho" src="styles/images/logo.svg">
+            
+             <button class="backbutton" onclick="setTimeout(function(){ event.preventDefault ? event.preventDefault() : event.returnValue = false; setTimeout(function(){window.kendo.mobile.application.pane.navigate('#:back')},20); window.NativePageTransitionsKendoAdapter.slide('down', null,'' + 140 + '', '' + 140 + '')}, 200);zeratudo_ila();"></button>
+            <!----<a class="backbutton" href="links/homeView/view.html" data-transition-native-androiddelay="250" data-transition-native-iosdelay="250" data-transition="slide:up" data-role="button" data-click=""></a>-->
+            
+            <!---<span data-bind="text: strings.igusg.title"></span>--->
+
+        </div>
+    </header>
+    <div class="titulo_calculadoras">ÍNDICE DE LÍQUIDO AMINIÓTICO<br><div class="traco_titulo_calculadoras"></div></div>
+    <button class="info_button" onclick="setTimeout(function(){info_ila()}, 200);"></button>
+    <div class="caixainfo">
+        
+        
+        <div>Idade Gestacional (semanas completas):</div>
+         <select name="ila_head_dummy_head" id="ila_head" class="calcgest campo_select">
+       	 <option  value="0">16 semanas</option>
+            <option  value="1">17 semanas</option>
+			<option  value="2">18 semanas</option>
+            <option  value="3">19 semanas</option>
+            <option  value="4">20 semanas</option>
+			<option  value="5">21 semanas</option>
+            <option  value="6">22 semanas</option>
+            <option  value="7">23 semanas</option>
+			<option  value="8">24 semanas</option>
+            <option  value="9">25 semanas</option>
+            <option  value="10">26 semanas</option>
+			<option  value="11">27 semanas</option>
+            <option  value="12">28 semanas</option>
+            <option  value="13">29 semanas</option>
+			<option  value="14">30 semanas</option>
+            <option  value="15">31 semanas</option>
+            <option  value="16">32 semanas</option>
+			<option  value="17">33 semanas</option>
+            <option  value="18">34 semanas</option>
+            <option  value="19">35 semanas</option>
+			<option  value="20">36 semanas</option>
+            <option  value="21">37 semanas</option>
+            <option  value="22">38 semanas</option>
+            <option  value="23">39 semanas</option>
+            <option  value="24">40 semanas</option>
+            <option  value="25">41 semanas</option>
+            <option  value="26">42 semanas</option> 
+		</select> 
+        
+<div class="ila_place_result" style="display:table;">
+               <div class='infoswal'>
+                   <b>ÍNDICE DE LÍQUIDO AMINIÓTICO (mm): <br> 
+                       <span style='font-weight:100!important;color:#000;font-size:14px;'>
+                           <div style='display:table;margin:0 auto;'>
+                               <ul class='tabela_BiometriaFetal2 gray_background'>
+                                   <li>p3</li>
+                                   <li>-</li>
+                               </ul>
+                               <ul class='tabela_BiometriaFetal2'>
+                                   <li>p5</li>
+                                   <li>-</li>
+                               </ul>
+                               <ul class='tabela_BiometriaFetal2 gray_background'>
+                                   <li>p50</li>
+                                   <li>-</li>
+                               </ul>
+                               <ul class='tabela_BiometriaFetal2'>
+                                   <li>p95</li>
+                                   <li>-</li>
+                               </ul>
+                               <ul class='tabela_BiometriaFetal2 gray_background'>
+                                   <li>p97</li>
+                                   <li>-</li>
+                               </ul>
+                           </div>
+                           </span>
+                           </b>
+                       
+               </div>
+        </div>
+       
+        <button style="display:none;" onclick=" setTimeout(function(){calcular_ila()}, 200);">OBTER PERCENTIS</button>
+      
+         
+  <script>
+	
+	$(function () {
+    // Create a datepicker 
+    $("#ila_head").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+      
+   
+                 
+});
+
+function calcular_ila() {
+      
+if ($("#ila_head_dummy").val() != "Toque para inserir a idade gestacional") { 
+      
+		  var selection = $("#ila_head").val();
+          var ila = ["73-79-121-185-201", "77-83-127-194-211", "80-87-133-202-220", "83-90-127-207-225", "86-93-141-212-230", "88-95-143-214-233", "89-97-145-216-235", "90-98-146-218-237", "90-98-147-219-238", "89-97-147-221-240", "89-97-147-223-242", "85-95-146-226-245", "86-94-146-228-249", "84-92-145-231-254", "82-90-145-234-258", "79-88-144-238-263", "77-86-144-242-269", "74-83-143-245-274", "72-81-142-248-278", "70-79-140-249-279", "68-77-138-249-279", "66-75-135-244-275", "65-73-132-239-269", "64-72-127-226-255", "63-71-123-214-240", "63-70-116-194-216", "63-69-110-175-192"];
+          
+          var resultado_ila = ila[selection].split("-");
+  
+          $(".ila_place_result").html("<div class='infoswal'><b>ÍNDICE DE LÍQUIDO AMINIÓTICO (mm): <br> <span style='font-weight:100!important;color:#000;font-size:14px;'><div style='display:table;margin:0 auto'><ul class='tabela_BiometriaFetal2 gray_background'><li>p3</li><li>"+ resultado_ila[0] +"</li></ul><ul class='tabela_BiometriaFetal2'><li>p5</li><li>"+ resultado_ila[1] +"</li></ul><ul class='tabela_BiometriaFetal2 gray_background'><li>p50</li><li>"+ resultado_ila[2] +"</li></ul><ul class='tabela_BiometriaFetal2'><li>p95</li><li>"+ resultado_ila[3] +"</li></ul><ul class='tabela_BiometriaFetal2 gray_background'><li>p97</li><li>"+ resultado_ila[4] +"</li></ul></div></span></b></div>");
+      
+ 
+         /*/
+	    swal({
+                  title: "RESULTADO:",
+                  text: "<div class='infoswal'><b>ALTURA UTERINA (cm): <br> <span style='font-weight:100!important;color:#000;font-size:14px;'><div style='display:table;margin:0 auto';margin-top:20px!important;><ul class='tabela_AlturaUterina gray_background'><li>p10</li><li>"+ resultado_AlturaUterina[0] +"</li></ul><ul class='tabela_AlturaUterina'><li>p50</li><li>"+ resultado_AlturaUterina[1] +"</li></ul><ul class='tabela_AlturaUterina gray_background'><li>p95</li><li>"+ resultado_AlturaUterina[2] +"</li></ul></div></span></div>", 
+                  html:true
+        });
+         /*/        
+                
+   }
+      
+			
+
+          
+        if ($("#ila_head_dummy").val() == "Toque para inserir a idade gestacional") { 
+
+            swal("Opa!", "Preencha todos os campos!", "warning")
+            
+        }
+    
+    
+    
+	  }  
+   
+
+      
+      function info_ila(){
+             swal({
+                  title: "INFO",
+                  text: "<div class='infoswal'><b><br>REFERÊNCIA BIBLIOGRÁFICA:<br><br> <span style='font-weight:100!important;color:#000;font-size:14px;'>Moore TR, Cayle JE. The amniotic fluid index in normal human pregnancy. Am J Obstet Gynecol 1990;162:1168-73.</span></div>", 
+                  html:true,
+                  type: 'info'
+             });
+      }
+      
+      $('#ila_head').on('change', function() {
+           setTimeout(function(){calcular_ila()}, 200);
+      })
+      
+      
+     
+      function zeratudo_ila(){
+          $(".ila_place_result").html("<div class='infoswal'><b>ÍNDICE DE LÍQUIDO AMINIÓTICO (mm): <br> <span style='font-weight:100!important;color:#000;font-size:14px;'><div style='display:table;margin:0 auto'><ul class='tabela_BiometriaFetal2 gray_background'><li>p3</li><li>-</li></ul><ul class='tabela_BiometriaFetal2'><li>p5</li><li>-</li></ul><ul class='tabela_BiometriaFetal2 gray_background'><li>p50</li><li>-</li></ul><ul class='tabela_BiometriaFetal2'><li>p95</li><li>-</li></ul><ul class='tabela_BiometriaFetal2 gray_background'><li>p97</li><li>-</li></ul></div></span></b></div>");
+          
+      }
+             
+	</script>
+        
+    </div>
+    
+    
+    
+</div>
+    
+    
+    <!-- START_CUSTOM_CODE_homeView -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+    <!--<h1 data-bind="html: title"></h1>-->
+    <!-- END_CUSTOM_CODE_homeView -->
