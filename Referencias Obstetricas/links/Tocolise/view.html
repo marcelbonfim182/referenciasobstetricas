@@ -1,0 +1,177 @@
+<div data-role="view" data-title="View" data-layout="main" data-model="app.Tocolise" data-show="app.Tocolise.onShow" data-after-show="app.Tocolise.afterShow" id="TocoliseScreen" class="screen km-light" data-scroller='{"elastic": false}' data-use-native-scrolling="true">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+           
+            <img class="logocabecalho" src="styles/images/logo.svg">
+            
+             <button class="backbutton" onclick="setTimeout(function(){ event.preventDefault ? event.preventDefault() : event.returnValue = false; setTimeout(function(){window.kendo.mobile.application.pane.navigate('#:back')},20); window.NativePageTransitionsKendoAdapter.slide('down', null,'' + 140 + '', '' + 140 + '')}, 200)"></button>
+            <!----<a class="backbutton" href="links/homeView/view.html" data-transition-native-androiddelay="250" data-transition-native-iosdelay="250" data-transition="slide:up" data-role="button" data-click=""></a>-->
+            
+            <!---<span data-bind="text: strings.igusg.title"></span>--->
+
+        </div>
+    </header>
+    <div class="titulo_calculadoras">ÍNDICE DE TOCÓLISE<br><div class="traco_titulo_calculadoras"></div></div>
+    <button style="display:none!important;" class="info_button" onclick="setTimeout(function(){info_Tocolise()}, 200);"></button>
+    <div class="caixainfo">
+        
+        
+        <div>POSIÇÃO DO COLO:</div>
+         <select name="Tocolise_head" id="Tocolise_head" class="calcgest campo_select">
+       	 <option  value="0">Posterior</option>
+            <option  value="1">Anterior</option>
+			<option  value="2">Centralizado</option>
+		</select>
+        
+        
+       <div>APAGAMENTO:</div>
+         <select name="Tocolise_head" id="Tocolise_head2" class="calcgest campo_select">
+       	 <option  value="0"><30%</option>
+            <option  value="1">30-50%</option>
+			<option  value="2">>50%</option>
+		</select>
+        
+        
+        <div>DILATAÇÃO</div>
+         <select name="Tocolise_head" id="Tocolise_head3" class="calcgest campo_select">
+       	 <option  value="0"><2cm</option>
+            <option  value="1">2-4cm</option>
+			<option  value="2">>4cm</option>
+		</select>
+        
+        <div>ALTURA DA APRESENTAÇÃO</div>
+         <select name="Tocolise_head" id="Tocolise_head4" class="calcgest campo_select">
+       	 <option  value="0">Alta (Móvel)</option>
+            <option  value="1">Média (Fixa)</option>
+			<option  value="2">Baixa</option>
+		</select>
+        
+        <div>BOLSA DAS ÁGUAS</div>
+         <select name="Tocolise_head" id="Tocolise_head5" class="calcgest campo_select">
+       	 <option  value="0">Não Formada</option>
+            <option  value="1">Formada</option>
+			<option  value="2">Herniada</option>
+		</select>
+        
+         <div>CONTRAÇÕES UTERINAS</div>
+        <select name="Tocolise_head" id="Tocolise_head6" class="calcgest campo_select">
+       	 <option  value="0"><1/HORA</option>
+            <option  value="1">1/15"/10'</option>
+			<option  value="2">>2/15"/10'</option></option>
+		</select> 
+        
+       
+        <button onclick=" setTimeout(function(){calcular_Tocolise()}, 200);">CALCULAR ÍNDICE DE BISHOP</button>
+      
+         
+  <script>
+	
+	$(function () {
+    // Create a datepicker 
+    $("#Tocolise_head").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+    $("#Tocolise_head2").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+    $("#Tocolise_head3").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+    $("#Tocolise_head4").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+    $("#Tocolise_head5").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+    $("#Tocolise_head6").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+      
+   
+                 
+});
+      
+     
+
+function calcular_Tocolise() {
+      
+      
+        if ( ($("#Tocolise_head_dummy").val() != "Toque para inserir a altura") || ($("#Tocolise_head2_dummy").val() != "Toque para inserir a dilatação") || ($("#Tocolise_head3_dummy").val() != "Toque para inserir o apagamento") || ($("#Tocolise_head4_dummy").val() != "Toque para inserir a consistência") || ($("#Tocolise_head5_dummy").val() != "Toque para inserir a posição") || ($("#Tocolise_head6_dummy").val() != "Toque para inserir a posição") ) { 
+
+		  var Tocolise_head = parseInt($("#Tocolise_head").val());
+          var Tocolise_head2 = parseInt($("#Tocolise_head2").val());
+          var Tocolise_head3 = parseInt($("#Tocolise_head3").val());
+          var Tocolise_head4 = parseInt($("#Tocolise_head4").val());
+          var Tocolise_head5 = parseInt($("#Tocolise_head5").val());
+          var Tocolise_head6 = parseInt($("#Tocolise_head6").val());
+      
+          var Tocolise_result = Tocolise_head + Tocolise_head2 + Tocolise_head3 + Tocolise_head4 + Tocolise_head5 + Tocolise_head6;
+          var Tocolise_result_mensagem = "";
+      
+          if(Tocolise_result <= 5){ Tocolise_result_mensagem = "Sem risco para parto prematuro imediato. <br>Reavaliar condições do colo."};
+          if(Tocolise_result >= 6 && Tocolise_result <= 10  ){ Tocolise_result_mensagem = "Inibição com uterolítico."};
+          if(Tocolise_result >= 11  ){ Tocolise_result_mensagem = "Trabalho de parto prematuro. <br>Individualizar ou conduzir o parto."};
+              
+              swal({
+                  title: "RESULTADO:",
+                  text: "<div class='infoswal'><b>ÍNDICE DE BISHOP: <br><br> <span style='font-weight:100!important;color:#000;font-size:14px;'>Índice de Bishop = "+ Tocolise_result +".</span>" + "<br><br><span style='font-weight:100!important;color:#000;font-size:14px;'>"+ Tocolise_result_mensagem +"</span></div>", 
+                  html:true
+              });
+      
+       
+        }
+      
+			
+          
+        if ( ($("#Tocolise_head_dummy").val() == "Toque para inserir a altura") || ($("#Tocolise_head2_dummy").val() == "Toque para inserir a dilatação") || ($("#Tocolise_head3_dummy").val() == "Toque para inserir o apagamento") || ($("#Tocolise_head4_dummy").val() == "Toque para inserir a consistência") || ($("#Tocolise_head5_dummy").val() == "Toque para inserir a posição") || ($("#Tocolise_head6_dummy").val() == "Toque para inserir a posição") ) { 
+
+            swal("Opa!", "Preencha todos os campos!", "warning")
+            
+        }
+    
+    
+    
+	  }  
+   
+
+      
+      function info_Bishop(){
+             swal({
+                  title: "INFO",
+                  text: "<div class='infoswal'><b>REFERÊNCIA BIBLIOGRÁFICA: <br><br><span style='font-weight:100!important;color:#000;font-size:14px;'>AMERICAN  COLLEGE  OF  OBSTETRICIANS  AND  GYNECOLOGISTS.    ACOG  Practice  Bulletin,  n.107. Induction of labor. Obstet. Gynecol., v.114, n.2pt.1, p.386-397, 2009.</span></div>", 
+                  html:true,
+                  type: 'info'
+             });
+      }
+             
+	</script>
+        
+    </div>
+    
+    
+    
+</div>
+    
+    
+    <!-- START_CUSTOM_CODE_homeView -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+    <!--<h1 data-bind="html: title"></h1>-->
+    <!-- END_CUSTOM_CODE_homeView -->

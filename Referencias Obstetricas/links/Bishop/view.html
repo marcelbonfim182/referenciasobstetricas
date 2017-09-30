@@ -1,0 +1,165 @@
+<div data-role="view" data-title="View" data-layout="main" data-model="app.Bishop" data-show="app.Bishop.onShow" data-after-show="app.Bishop.afterShow" id="BishopScreen" class="screen km-light" data-scroller='{"elastic": false}' data-use-native-scrolling="true">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+           
+            <img class="logocabecalho" src="styles/images/logo.svg">
+            
+             <button class="backbutton" onclick="setTimeout(function(){ event.preventDefault ? event.preventDefault() : event.returnValue = false; setTimeout(function(){window.kendo.mobile.application.pane.navigate('#:back')},20); window.NativePageTransitionsKendoAdapter.slide('down', null,'' + 140 + '', '' + 140 + '')}, 200)"></button>
+            <!----<a class="backbutton" href="links/homeView/view.html" data-transition-native-androiddelay="250" data-transition-native-iosdelay="250" data-transition="slide:up" data-role="button" data-click=""></a>-->
+            
+            <!---<span data-bind="text: strings.igusg.title"></span>--->
+
+        </div>
+    </header>
+    <div class="titulo_calculadoras">ÍNDICE DE BISHOP<br><div class="traco_titulo_calculadoras"></div></div>
+    <button class="info_button" onclick="setTimeout(function(){info_Bishop()}, 200);"></button>
+    <div class="caixainfo">
+        
+        
+        <div>ALTURA DA APRESENTAÇÃO (De Lee):</div>
+         <select name="Bishop_head" id="Bishop_head" class="calcgest campo_select">
+       	 <option  value="0">-3 De Lee</option>
+            <option  value="1">-2 De Lee</option>
+			<option  value="2">-1 De Lee</option>
+            <option  value="3">0 De Lee ou abaixo</option>
+		</select>
+        
+        
+       <div>DILATAÇÃO (cm):</div>
+         <select name="Bishop_head" id="Bishop_head2" class="calcgest campo_select">
+       	 <option  value="0">0 cm</option>
+            <option  value="1">1-2 cm</option>
+			<option  value="2">3-4 cm</option>
+            <option  value="3">>5 cm</option>
+		</select>
+        
+        
+        <div>APAGAMENTO (%):</div>
+         <select name="Bishop_head" id="Bishop_head3" class="calcgest campo_select">
+       	 <option  value="0">0-30%</option>
+            <option  value="1">40-50%</option>
+			<option  value="2">60-70%</option>
+            <option  value="3">80%</option>
+		</select>
+        
+        <div>CONSISTÊNCIA:</div>
+         <select name="Bishop_head" id="Bishop_head4" class="calcgest campo_select">
+       	 <option  value="0">Firme</option>
+            <option  value="1">Médio</option>
+			<option  value="2">Amolecido</option>
+		</select>
+        
+        <div>POSIÇÃO:</div>
+         <select name="Bishop_head" id="Bishop_head5" class="calcgest campo_select">
+       	 <option  value="0">Posterior</option>
+            <option  value="1">Intermediária</option>
+			<option  value="2">Centralizada</option>
+		</select> 
+        
+       
+        <button onclick=" setTimeout(function(){calcular_Bishop()}, 200);">CALCULAR ÍNDICE DE BISHOP</button>
+      
+         
+  <script>
+	
+	$(function () {
+    // Create a datepicker 
+    $("#Bishop_head").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+    $("#Bishop_head2").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+    $("#Bishop_head3").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+    $("#Bishop_head4").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+    $("#Bishop_head5").mobiscroll().select({ 
+        theme: 'normal', 
+        display: 'bottom',
+		lang: 'pt-BR',
+    });
+      
+      
+   
+                 
+});
+      
+     
+
+function calcular_Bishop() {
+      
+      
+        if ( ($("#Bishop_head_dummy").val() != "Toque para inserir a altura") || ($("#Bishop_head2_dummy").val() != "Toque para inserir a dilatação") || ($("#Bishop_head3_dummy").val() != "Toque para inserir o apagamento") || ($("#Bishop_head4_dummy").val() != "Toque para inserir a consistência") || ($("#Bishop_head5_dummy").val() != "Toque para inserir a posição") ) { 
+
+		  var Bishop_head = parseInt($("#Bishop_head").val());
+          var Bishop_head2 = parseInt($("#Bishop_head2").val());
+          var Bishop_head3 = parseInt($("#Bishop_head3").val());
+          var Bishop_head4 = parseInt($("#Bishop_head4").val());
+          var Bishop_head5 = parseInt($("#Bishop_head5").val());
+      
+          var bishop_result = Bishop_head + Bishop_head2 + Bishop_head3 + Bishop_head4 + Bishop_head5;
+          var bishop_result_mensagem = "";
+      
+          if(bishop_result <= 6){ bishop_result_mensagem = "Necessário amadurecimento cervical prévio a indução."};
+          if(bishop_result >= 7){ bishop_result_mensagem = "Indução com ocitocina."};
+      
+              swal({
+                  title: "RESULTADO:",
+                  text: "<div class='infoswal'><b>ÍNDICE DE BISHOP: <br><br> <span style='font-weight:100!important;color:#000;font-size:14px;'>Índice de Bishop = "+ bishop_result +".</span>" + "<br><br><span style='font-weight:100!important;color:#000;font-size:14px;'>"+ bishop_result_mensagem +"</span></div>", 
+                  html:true
+              });
+      
+       
+        }
+      
+			
+          
+        if ( ($("#Bishop_head_dummy").val() == "Toque para inserir a altura") || ($("#Bishop_head2_dummy").val() == "Toque para inserir a dilatação") || ($("#Bishop_head3_dummy").val() == "Toque para inserir o apagamento") || ($("#Bishop_head4_dummy").val() == "Toque para inserir a consistência") || ($("#Bishop_head5_dummy").val() == "Toque para inserir a posição") ) { 
+
+            swal("Opa!", "Preencha todos os campos!", "warning")
+            
+        }
+    
+    
+    
+	  }  
+   
+
+      
+      function info_Bishop(){
+             swal({
+                  title: "INFO",
+                  text: "<div class='infoswal'><b>REFERÊNCIA BIBLIOGRÁFICA: <br><br><span style='font-weight:100!important;color:#000;font-size:14px;'>AMERICAN  COLLEGE  OF  OBSTETRICIANS  AND  GYNECOLOGISTS.    ACOG  Practice  Bulletin,  n.107. Induction of labor. Obstet. Gynecol., v.114, n.2pt.1, p.386-397, 2009.</span></div>", 
+                  html:true,
+                  type: 'info'
+             });
+      }
+             
+	</script>
+        
+    </div>
+    
+    
+    
+</div>
+    
+    
+    <!-- START_CUSTOM_CODE_homeView -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+    <!--<h1 data-bind="html: title"></h1>-->
+    <!-- END_CUSTOM_CODE_homeView -->
